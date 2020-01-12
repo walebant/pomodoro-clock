@@ -20,19 +20,21 @@ const Pomodoro = () => {
         isSession ? setMinutes(sessionInterval) : setMinutes(breakInterval)
     }
 
+    const running = (bool) => setIsRunning(bool)
+
     return (
         <div className="container">
             <Timer minutes={minutes} 
-                sessionInterval={sessionInterval} 
                 setSessionInterval={setSessionInterval}
-                decreaseMinutes={decreaseMinutes}
-                setMinutes={setMinutes}
                 setBreakInterval={setBreakInterval}
-                setIsSession={setIsSession} 
+                sessionInterval={sessionInterval} 
+                decreaseMinutes={decreaseMinutes}
                 toggleInterval={toggleInterval}
-                isSession={isSession}
+                running={running}
+                setIsSession={setIsSession} 
+                setMinutes={setMinutes}
                 isRunning={isRunning}
-                setIsRunning={setIsRunning}
+                isSession={isSession}
              />
 
             <BreakLength 

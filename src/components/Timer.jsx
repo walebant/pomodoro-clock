@@ -1,6 +1,7 @@
-import { Button } from "@chakra-ui/core";
 import React, { Component } from "react";
-import { CircularProgress, CircularProgressLabel } from "@chakra-ui/core";
+import { AiOutlinePause } from 'react-icons/ai'
+import { TiMediaPlayOutline } from 'react-icons/ti'
+import { CircularProgress, CircularProgressLabel, Tooltip, Button, IconButton } from "@chakra-ui/core";
 import { Editable, EditableInput, EditablePreview } from "@chakra-ui/core";
 
 class Timer extends Component {
@@ -12,10 +13,11 @@ class Timer extends Component {
         }
     }
     
-    decrementTimer() {
+    countDown() {
         switch(this.state.seconds) {
             case 0:
                 if(this.props.minutes === 0 ) {
+                    document.querySelector('#beep').play()
                     if(this.props.isSession) {
                         this.props.setIsSession(false)
                         this.props.toggleInterval()
@@ -26,7 +28,7 @@ class Timer extends Component {
                 }
                 this.props.decreaseMinutes()
                 this.setState({
-                    seconds: 60
+                    seconds: 59
                 })
                 break;
             default:
@@ -37,19 +39,28 @@ class Timer extends Component {
 
     reset = () => {
         clearInterval(this.state.intervalId)
+        document.querySelector('#beep').pause()
+        document.querySelector('#beep').currentTime = 0
+        this.props.running(false)
         this.props.setMinutes(25)
+        this.props.setIsSession(true)
         this.setState({seconds: 0})
         this.props.setBreakInterval(5)
         this.props.setSessionInterval(25)
-        this.props.setIsRunning(false)
     } 
     
     start = () => {
-        this.props.setIsRunning(true)
-        const intervalId = setInterval(() => this.decrementTimer(), 1000);
-        this.setState({
-            intervalId: intervalId
-        })
+        if(this.props.isRunning) {
+            clearInterval(this.state.intervalId)
+            this.props.running(false)
+        } else {
+            this.props.running(true)
+            const intervalId = setInterval(() => this.countDown(), 1000);
+            this.setState({
+                intervalId: intervalId
+            })
+            this.props.isRunning && clearInterval(this.state.intervalId)
+        }
     }
 
     render() {
@@ -74,18 +85,25 @@ class Timer extends Component {
                 <CircularProgressLabel id="timer-label">
                     {this.props.isSession ?
                         (
+                            <Tooltip label="Edit session title" placement="bottom">
                             <Editable defaultValue="Session">
                                 <EditablePreview />
                                 <EditableInput />
                             </Editable>
+                            </Tooltip>
                         )
                         : 'Break'}
                     </CircularProgressLabel>
             </CircularProgress>
-
+            <audio id="beep" preload="auto" src="https://goo.gl/65cBl1" />
             <div className="start_stop_reset">
-                <Button variantColor={this.props.isRunning ? "orange" : "green"} id="start_stop" onClick={this.start}>Start/Stop</Button>
-                <Button variantColor={this.props.isRunning ? "orange" : "green"} id="reset" onClick={this.reset}>Reset</Button>
+                <IconButton as={this.props.isRunning ? AiOutlinePause : TiMediaPlayOutline} aria-label="play/pause timer" variantColor={this.props.isRunning ? "orange" : "green"} id="start_stop" onClick={this.start} />
+                <Tooltip label="Reset" placement="right">
+                    <IconButton aria-label="reset timer" icon="repeat" variantColor={this.props.isRunning ? "orange" : "green"} id="reset" onClick={this.reset} />
+                </Tooltip>
+                {/* comment out 100 - 103 and uncomment 105 - 106 to pass test suite */}
+                {/* <Button variantColor={this.props.isRunning ? "orange" : "green"} id="start_stop" onClick={this.start}>Start/Pause</Button>
+                <Button variantColor={this.props.isRunning ? "orange" : "green"} id="reset" onClick={this.reset}>Reset</Button> */}
             </div>
         </div>
         )
