@@ -17,13 +17,6 @@ body {
     top: 175px;
 }
 
-#start_stop:focus, #reset:focus {
-    outline: 0;
-}
-#start_stop:active, #reset:active {
-    outline: none;
-}
-
 .container {
     display: block;
     margin: 0 auto;

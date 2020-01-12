@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AiOutlinePause } from 'react-icons/ai'
 import { TiMediaPlayOutline } from 'react-icons/ti'
-import { CircularProgress, CircularProgressLabel, Tooltip, Button, IconButton } from "@chakra-ui/core";
+import { CircularProgress, CircularProgressLabel, Tooltip, IconButton } from "@chakra-ui/core";
 import { Editable, EditableInput, EditablePreview } from "@chakra-ui/core";
 
 class Timer extends Component {
@@ -66,7 +66,6 @@ class Timer extends Component {
     render() {
         const showMin = this.props.minutes < 10 ? `0${this.props.minutes}` : this.props.minutes;
         const showSec = this.state.seconds < 10 ? `0${this.state.seconds}` : this.state.seconds;
-        const timer = `${showMin}:${showSec}`;
         
         return (
             <div className="container">
