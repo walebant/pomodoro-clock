@@ -68,7 +68,7 @@ class Timer extends Component {
         const showSec = this.state.seconds < 10 ? `0${this.state.seconds}` : this.state.seconds;
         
         return (
-            <div className="container">
+            <>
             <CircularProgress 
                 value={this.props.minutes}
                 max={this.props.sessionInterval}
@@ -95,16 +95,14 @@ class Timer extends Component {
                     </CircularProgressLabel>
             </CircularProgress>
             <audio id="beep" preload="auto" src="https://goo.gl/65cBl1" />
-            <div className="start_stop_reset">
+            
+            <div className="start_stop_reset_container">
                 <IconButton as={this.props.isRunning ? AiOutlinePause : TiMediaPlayOutline} aria-label="play/pause timer" variantColor={this.props.isRunning ? "orange" : "green"} id="start_stop" onClick={this.start} />
                 <Tooltip label="Reset" placement="right">
                     <IconButton aria-label="reset timer" icon="repeat" variantColor={this.props.isRunning ? "orange" : "green"} id="reset" onClick={this.reset} />
                 </Tooltip>
-                {/* comment out 100 - 103 and uncomment 105 - 106 to pass test suite */}
-                {/* <Button variantColor={this.props.isRunning ? "orange" : "green"} id="start_stop" onClick={this.start}>Start/Pause</Button>
-                <Button variantColor={this.props.isRunning ? "orange" : "green"} id="reset" onClick={this.reset}>Reset</Button> */}
             </div>
-        </div>
+        </>
         )
     }
 }

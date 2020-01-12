@@ -48,6 +48,10 @@ const Pomodoro = () => {
                 incrementSession={() => increment(setSessionInterval)} 
                 decrementSession={() => decrement(setSessionInterval)}
                 setMinutes={setMinutes} />
+            
+            <footer>
+                Design & Coded by <a target="_blank" rel="noopener noreferrer" href="https://waledev.com">wale_bant</a>
+            </footer>
         </div>
     )
 }

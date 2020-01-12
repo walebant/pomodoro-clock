@@ -11,53 +11,83 @@ body {
     color: $text-color;
     background-color: $bg-color;
     font-family: 'Poppins', sans-serif;
+
+    .container {
+        width: 100vw;
+        margin: 0 auto;
+        display: block;
+        margin-top: 20vh;
+        text-align: center;
+
+        & #time-left, #timer-label {
+            color: $text-color;
+        }
+        
+        & #timer-label {
+            top: 175px;
+            font-size: 2rem;
+        }
+
+        & .lenght-container {
+            text-align: center;
+            display: inline-block;
+
+            & .length {
+                font-size: .9em;
+            }
+        }
+
+        & .start_stop_reset_container {
+            margin-top: 25px;
+
+            & #start_stop {
+                    cursor: pointer;
+                }
+        }
+
+        & p {
+            color: darken($text-color, 30%);
+        }
+
+        & button {
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            color: darken($text-color, 30%);
+
+            & button:hover {
+                box-shadow: 1px 2px 0 .5px lighten($text-color, 15%);
+            }
+        }
+
+        #reset {
+            color: lighten($text-color, 30%);
+        }
+
+        footer {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            left: 37%;
+            font-size: .55em;
+
+            & a {
+                text-decoration: none;
+                color: darkgreen;
+                &:hover {
+                    color: orangered;
+                }
+            }
+        }
+    }
 }
 
-#time-left, #timer-label {
-    color: $text-color;
-}
-#timer-label {
-    top: 175px;
-    font-size: 2rem;
-}
 
-.container {
-    width: 100vw;
-    margin: 0 auto;
-    display: block;
-    margin-top: 20vh;
-    text-align: center;
-}
 
-.lenght-container {
-    text-align: center;
-    display: inline-block;
-}
 
-.start_stop_reset {
-    margin-top: 25px;
-}
 
-#start_stop {
-    cursor: pointer;
-}
 
-.length {
-    font-size: .9em;
-}
 
-p {
-    color: darken($text-color, 30%);
-}
 
-button {
-    border: none;
-    outline: none;
-    margin: 0 10px;
-    cursor: pointer;
-    color: darken($text-color, 30%);
-}
 
-button:hover {
-    box-shadow: 1px 2px 0 .5px lighten($text-color, 15%);
-}
+
