@@ -1,52 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+
 $text-color: #aaa;
 $bg-color: #ddd;
 
 body {
-    background-color: $bg-color;
-    font-size: 1.5rem;
-    color: $text-color;
     width: 100vw;
     height: 100vh;
+    font-size: 1.5rem;
+    color: $text-color;
+    background-color: $bg-color;
+    font-family: 'Poppins', sans-serif;
 }
 
 #time-left, #timer-label {
     color: $text-color;
 }
 #timer-label {
-    font-size: 2rem;
     top: 175px;
+    font-size: 2rem;
 }
 
 .container {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20vh;
     width: 100vw;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20vh;
     text-align: center;
 }
 
 .lenght-container {
-    display: inline-block;
     text-align: center;
+    display: inline-block;
 }
 
 .start_stop_reset {
     margin-top: 25px;
 }
 
+#start_stop {
+    cursor: pointer;
+}
+
 .length {
     font-size: .9em;
 }
+
 p {
     color: darken($text-color, 30%);
 }
 
 button {
-    margin: 0 10px;
     border: none;
+    outline: none;
+    margin: 0 10px;
     cursor: pointer;
     color: darken($text-color, 30%);
-    outline: none;
 }
 
 button:hover {

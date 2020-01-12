@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import BreakLength from './BreakLenght'
 import SessionLength from './SessionLenght'
 import Timer from './Timer'
-import "../App.scss";
 
 const Pomodoro = () => {
     const [minutes, setMinutes] = useState(25)
