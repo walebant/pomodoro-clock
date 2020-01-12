@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
-$text-color: #aaa;
 $bg-color: #ddd;
+$text-color: #aaa;
 
 body {
     width: 100vw;
@@ -29,6 +29,7 @@ body {
         }
 
         & .lenght-container {
+            margin-top: 1em;
             text-align: center;
             display: inline-block;
 
@@ -65,19 +66,21 @@ body {
         }
 
         footer {
-            text-align: center;
-            position: absolute;
+            left: 0; 
+            right: 0; 
             bottom: 10px;
-            left: 37%;
+            margin: 0 auto; 
             font-size: .55em;
+            position: absolute; 
 
             & a {
-                text-decoration: none;
                 color: darkgreen;
+                text-decoration: none;
                 &:hover {
                     color: orangered;
                 }
             }
+
         }
     }
 }
