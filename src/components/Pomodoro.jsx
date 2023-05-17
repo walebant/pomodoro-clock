@@ -50,7 +50,7 @@ const Pomodoro = () => {
                 setMinutes={setMinutes} />
             
             <footer>
-                Design & Coded by <a target="_blank" rel="noopener noreferrer" href="https://walebant.tech">walebant</a>
+                Design & Built by <a target="_blank" rel="noopener noreferrer" href="https://walebant.tech">walebant</a>
             </footer>
         </div>
     )
